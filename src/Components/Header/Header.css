@@ -1,0 +1,17 @@
+.header__wrap {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.header__buttons__inner {
+    display: flex;
+    justify-content: center;
+
+}
+
+.header__input__inner {
+}
+.aaa{
+    color: #f30505;
+}

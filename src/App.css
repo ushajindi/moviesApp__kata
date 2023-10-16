@@ -1,0 +1,17 @@
+
+body{
+    background: #eee;
+}
+.app{
+
+}
+.container{
+    max-width: 1010px;
+    margin: 0 auto;
+    padding: 0 36px 20px 36px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+;
+}
