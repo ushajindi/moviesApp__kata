@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     max-width: 451px;
     position: relative;
-    box-shadow: rgba(134, 111, 111, 0.15) 3px 5px 4px;
+    box-shadow: rgba(134, 111, 111, 0.15) 6px 0px 4px, -1px 4px 2px rgba(134, 111, 111, 0.15);
 }
 .movie__card{
     display: flex;
@@ -48,6 +48,9 @@
 }
 
 .movie__card__info__genre {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .movie__card__info__about {
@@ -68,12 +71,53 @@
     height: 30px;
     border-radius: 50%;
 }
-.movie__card__info__circle__rating.middle{
+.movie__card__info__circle__rating.middle__low{
+    border: 2px solid #E97E00;
+}.movie__card__info__circle__rating.middle{
     border: 2px solid #E9D100;
 }
 .movie__card__info__circle__rating.low{
-    border: 2px solid #f30505;
+    border: 2px solid #E90000;
 }
 .movie__card__info__circle__rating.high{
-    border: 2px solid #05f311;
+    border: 2px solid #66E900;
+}
+
+@media (max-width: 936px) {
+    .movie{
+        min-width: 100%;
+    }
+    .movie__card{
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .movie{
+        min-width: 90%;
+        padding: 0 15px;
+    }
+    .movie__card__info__genre{
+        justify-content: center;
+    }
+    .movie__card__info__genre{
+        padding-left: 90px;
+        justify-content: flex-start;
+    }
+    .movie__card__info__date{
+        padding-left: 90px;
+    }
+    .movie__card__info__text{
+        padding-left: 90px;
+        max-width: 150px;
+    }
+    .movie__card__img__inner{
+        position: absolute;
+        width: 72px;
+        height: 100px;
+    }
+    .movie__card__info__rating{
+        display: flex;
+        justify-content: center;
+    }
 }

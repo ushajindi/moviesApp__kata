@@ -13,7 +13,7 @@ class MoviesList extends Component<PropsType> {
     return (
       <div className="movie__inner">
         {movies.map((movie) => {
-          return <Movie movie={movie} key={movie.id} />;
+          return <Movie movie={movie} key={movie.movieId} />;
         })}
       </div>
     );
