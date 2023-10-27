@@ -1,27 +1,37 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+##README
+# Проект "kata__MovieApp"
 
-Currently, two official plugins are available:
+Это проект для создания приложения To-Do List с использованием React, Vite и TypeScript.
+#Ссылка на приложения [http://movieapp.rshakh.ru/](http://movieapp.rshakh.ru/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Установка зависимостей
 
-## Expanding the ESLint configuration
+Перед запуском проекта убедитесь, что у вас установлен Node.js и npm. Затем выполните следующие команды в корневой директории проекта:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+npm install
 ```
+Доступные скрипты
+В проекте доступны следующие скрипты:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+ ~ Запуск проекта в режиме разработки:
+```bash
+npm run dev
+```
+~Сборка проекта
+```bash
+npm run build
+```
+~Запуск ESLint для проверки кода
+```bash
+npm run lint
+```
+~Запуск ESLint для проверки кода с автоматической форматированием
+```bash 
+npm run lint:fix
+```
+~Просмотр проекта в режиме предварительного просмотра:
+```bash
+npm run preview
+```
