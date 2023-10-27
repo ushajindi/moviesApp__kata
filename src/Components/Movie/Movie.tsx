@@ -4,7 +4,7 @@ import { Image, Rate, Typography } from "antd";
 import { format } from "date-fns";
 import noImg from "../../img/no_image.jpg";
 import { MovieType } from "../../App";
-import { MovieConsumer } from "../Context/MovieContext";
+import MovieContext from "../Context/MovieContext";
 
 type PropsType = {
   movie: MovieType;
@@ -49,7 +49,7 @@ class Movie extends Component<PropsType> {
     return (
       <div className="movie">
         <div className="movie__card">
-          <MovieConsumer>
+          <MovieContext.Consumer>
             {({ genre, setRating }) => {
               if (genre != null && genre.length !== 0) {
                 return (
@@ -123,7 +123,7 @@ class Movie extends Component<PropsType> {
               }
               return <> </>;
             }}
-          </MovieConsumer>
+          </MovieContext.Consumer>
         </div>
       </div>
     );

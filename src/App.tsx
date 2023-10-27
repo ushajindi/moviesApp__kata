@@ -6,7 +6,7 @@ import Api, { GenreType, MovieApiResponse } from "./ApiServices/Api";
 // eslint-disable-next-line import/order
 import { Spin, Alert, message } from "antd";
 import PaginationComponent from "./Components/PaginationComponent/PaginationComponent";
-import { MovieProvider } from "./Components/Context/MovieContext";
+import MovieContext from "./Components/Context/MovieContext";
 import RatedMovies from "./Components/RatedMovies/RatedMovies";
 
 export interface MovieType {
@@ -147,11 +147,11 @@ class App extends Component<{}, AppState> {
               movieSearch={movieSearch}
               OnChangeSearch={this.OnChangeSearch}
             />
-            <MovieProvider
+            <MovieContext.Provider
               value={{ genre: genre || [], setRating: Api.setRating }}
             >
               <MoviesList movies={movies} />
-            </MovieProvider>
+            </MovieContext.Provider>
 
             <PaginationComponent
               OnChangePagination={this.OnChangePagination.bind(this)}
@@ -170,11 +170,11 @@ class App extends Component<{}, AppState> {
               movieSearch={movieSearch}
               OnChangeSearch={this.OnChangeSearch}
             />
-            <MovieProvider
+            <MovieContext.Provider
               value={{ genre: genre || [], setRating: Api.setRating }}
             >
               <RatedMovies />
-            </MovieProvider>
+            </MovieContext.Provider>
           </>
         );
       }

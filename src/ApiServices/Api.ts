@@ -89,9 +89,9 @@ export default class Api {
         options,
       ).then((res) => {
         if (res.status === 201) {
-          message.success("Movie Rated Success");
+          message.success("Movie Rated Success", 1);
           const movieRatedString = localStorage.getItem("movie");
-
+          console.log(movieRatedString);
           if (movieRatedString) {
             const movieRated = JSON.parse(movieRatedString);
 

@@ -45,5 +45,6 @@ module.exports = {
         "@typescript-eslint/no-explicit-any":"off",
         "react/jsx-no-bind":"off",
         "@typescript-eslint/ban-types":"off",
+        "react/jsx-no-constructed-context-values":"off",
     }
 }
