@@ -1,13 +1,12 @@
 import { ChangeEvent, Component } from "react";
 import Header from "./Components/Header/Header";
-import "./App.css";
 import MoviesList from "./Components/MoviesList/MoviesList";
-import Api, { GenreType, MovieApiResponse } from "./ApiServices/Api";
-// eslint-disable-next-line import/order
-import { Spin, Alert, message } from "antd";
 import PaginationComponent from "./Components/PaginationComponent/PaginationComponent";
 import MovieContext from "./Components/Context/MovieContext";
 import RatedMovies from "./Components/RatedMovies/RatedMovies";
+import { Spin, Alert, message } from "antd";
+import Api, { GenreType, MovieApiResponse } from "./ApiServices/Api";
+import "./App.css";
 
 export interface MovieType {
   backdropPath: string | null;
@@ -93,6 +92,32 @@ class App extends Component<{}, AppState> {
         movieQuery,
       );
       window.scroll(0, 0);
+      if (response.total_results === 0) {
+        message.success("Not Found", 1);
+        this.setState(() => {
+          const camelCaseResults = response.results.map((movie) => ({
+            backdropPath: movie.backdrop_path,
+            genreIds: movie.genre_ids,
+            movieId: movie.id,
+            originalTitle: movie.original_title,
+            overview: movie.overview,
+            popularity: movie.popularity,
+            posterPath: movie.poster_path,
+            releaseDate: movie.release_date,
+            title: movie.title,
+            voteAverage: movie.vote_average,
+            voteCount: movie.vote_count,
+          }));
+
+          return {
+            movies: camelCaseResults,
+            totalPages: response.total_results,
+            currentPage: response.page,
+            isLoading: false,
+          };
+        });
+      }
+
       this.setState(() => {
         const camelCaseResults = response.results.map((movie) => ({
           backdropPath: movie.backdrop_path,
@@ -152,12 +177,13 @@ class App extends Component<{}, AppState> {
             >
               <MoviesList movies={movies} />
             </MovieContext.Provider>
-
-            <PaginationComponent
-              OnChangePagination={this.OnChangePagination.bind(this)}
-              currentPage={currentPage}
-              totalCount={totalPages}
-            />
+            {totalPages > 20 && (
+              <PaginationComponent
+                OnChangePagination={this.OnChangePagination.bind(this)}
+                currentPage={currentPage}
+                totalCount={totalPages}
+              />
+            )}
           </>
         );
       }

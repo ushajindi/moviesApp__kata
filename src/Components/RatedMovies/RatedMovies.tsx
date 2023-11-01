@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { message, Spin } from "antd";
+import { message } from "antd";
 import MoviesList from "../MoviesList/MoviesList";
 import PaginationComponent from "../PaginationComponent/PaginationComponent";
 import { MovieType } from "../../App";
@@ -8,7 +8,6 @@ interface AppState {
   movies: MovieType[] | [];
   totalPages: number;
   currentPage: number;
-  isLoading: boolean;
 }
 
 class RatedMovies extends Component<{}, AppState> {
@@ -18,7 +17,6 @@ class RatedMovies extends Component<{}, AppState> {
       movies: [],
       totalPages: 0,
       currentPage: 1,
-      isLoading: false,
     };
   }
 
@@ -29,6 +27,7 @@ class RatedMovies extends Component<{}, AppState> {
         const abstractData = JSON.parse(localData);
         this.setState(() => ({
           movies: abstractData,
+          totalPages: abstractData.length,
         }));
       } catch (e) {
         message.error("Error", 1);
@@ -42,17 +41,30 @@ class RatedMovies extends Component<{}, AppState> {
     }));
   };
 
+  MoviesPageControll(): MovieType[] {
+    const { movies, currentPage } = this.state;
+    const itemsPerPage = 20;
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    return movies.slice(startIndex, endIndex);
+  }
+
   render() {
-    const { movies, totalPages, currentPage, isLoading } = this.state;
+    const { movies, currentPage, totalPages } = this.state;
     return (
-      <Spin size="large" spinning={isLoading}>
-        {movies.length !== 0 && <MoviesList movies={movies} />}
-        <PaginationComponent
-          totalCount={totalPages}
-          currentPage={currentPage}
-          OnChangePagination={this.OnChangePagination}
-        />
-      </Spin>
+      <>
+        {movies.length !== 0 && (
+          <MoviesList movies={this.MoviesPageControll()} />
+        )}
+        {totalPages > 0 && (
+          <PaginationComponent
+            totalCount={totalPages}
+            currentPage={currentPage}
+            OnChangePagination={this.OnChangePagination}
+          />
+        )}
+      </>
     );
   }
 }

@@ -1,7 +1,7 @@
 import { ChangeEvent, Component } from "react";
-import "./Header.css";
 import { Input, Tabs } from "antd";
 import _ from "lodash";
+import "./Header.css";
 
 type PropsType = {
   OnChangeSearch: (e: ChangeEvent<HTMLInputElement>) => void;
