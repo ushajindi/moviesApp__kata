@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Movie from "../Movie/Movie";
-import { MovieType } from "../../App";
+import { MovieType } from "../App";
 import "./MoviesList.css";
 
 type PropsType = {

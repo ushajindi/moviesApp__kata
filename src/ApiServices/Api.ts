@@ -1,5 +1,5 @@
 import { message } from "antd";
-import { MovieType } from "../App";
+import { MovieType } from "../Components/App.tsx";
 
 export interface MovieResponseType {
   backdrop_path: string | null;

@@ -2,7 +2,7 @@ import { Component } from "react";
 import { message } from "antd";
 import MoviesList from "../MoviesList/MoviesList";
 import PaginationComponent from "../PaginationComponent/PaginationComponent";
-import { MovieType } from "../../App";
+import { MovieType } from "../App";
 
 interface AppState {
   movies: MovieType[] | [];
@@ -57,7 +57,7 @@ class RatedMovies extends Component<{}, AppState> {
         {movies.length !== 0 && (
           <MoviesList movies={this.MoviesPageControll()} />
         )}
-        {totalPages > 0 && (
+        {totalPages > 20 && (
           <PaginationComponent
             totalCount={totalPages}
             currentPage={currentPage}

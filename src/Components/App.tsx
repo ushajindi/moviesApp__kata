@@ -1,11 +1,11 @@
 import { ChangeEvent, Component } from "react";
-import Header from "./Components/Header/Header";
-import MoviesList from "./Components/MoviesList/MoviesList";
-import PaginationComponent from "./Components/PaginationComponent/PaginationComponent";
-import MovieContext from "./Components/Context/MovieContext";
-import RatedMovies from "./Components/RatedMovies/RatedMovies";
 import { Spin, Alert, message } from "antd";
-import Api, { GenreType, MovieApiResponse } from "./ApiServices/Api";
+import Api, { GenreType, MovieApiResponse } from "../ApiServices/Api";
+import Header from "./Header/Header";
+import MoviesList from "./MoviesList/MoviesList";
+import PaginationComponent from "./PaginationComponent/PaginationComponent";
+import MovieContext from "./Context/MovieContext";
+import RatedMovies from "./RatedMovies/RatedMovies";
 import "./App.css";
 
 export interface MovieType {
@@ -61,7 +61,6 @@ class App extends Component<{}, AppState> {
     this.GetGenres();
   }
 
-  // eslint-disable-next-line no-empty-pattern
   componentDidUpdate({}, prev: AppState) {
     const { currentPage, movieSearch } = this.state;
     if (prev.currentPage !== currentPage) {
@@ -69,7 +68,6 @@ class App extends Component<{}, AppState> {
     }
   }
 
-  // eslint-disable-next-line react/sort-comp
   async GetGenres() {
     try {
       const data = await Api.getGenres().then((res: Response) => res.json());
@@ -81,7 +79,6 @@ class App extends Component<{}, AppState> {
     }
   }
 
-  // eslint-disable-next-line react/sort-comp
   async GetData(page: number, movieQuery: string): Promise<void> {
     this.setState(() => ({
       isLoading: true,
@@ -160,8 +157,7 @@ class App extends Component<{}, AppState> {
   };
 
   OnPageController() {
-    const { movieSearch, movies, currentPage, totalPages, genre, page } =
-      this.state;
+    const { movies, currentPage, totalPages, genre, page } = this.state;
     switch (page) {
       case "Search": {
         return (
@@ -169,11 +165,14 @@ class App extends Component<{}, AppState> {
             <Header
               OnPageRouter={this.OnPageRouter}
               Page={page}
-              movieSearch={movieSearch}
               OnChangeSearch={this.OnChangeSearch}
             />
             <MovieContext.Provider
-              value={{ genre: genre || [], setRating: Api.setRating }}
+              value={{
+                genre: genre || [],
+                setRating: Api.setRating,
+                page,
+              }}
             >
               <MoviesList movies={movies} />
             </MovieContext.Provider>
@@ -193,11 +192,14 @@ class App extends Component<{}, AppState> {
             <Header
               OnPageRouter={this.OnPageRouter}
               Page={page}
-              movieSearch={movieSearch}
               OnChangeSearch={this.OnChangeSearch}
             />
             <MovieContext.Provider
-              value={{ genre: genre || [], setRating: Api.setRating }}
+              value={{
+                genre: genre || [],
+                setRating: Api.setRating,
+                page,
+              }}
             >
               <RatedMovies />
             </MovieContext.Provider>

@@ -46,7 +46,10 @@ module.exports = {
         "react/jsx-no-bind":"off",
         "@typescript-eslint/ban-types":"off",
         "react/jsx-no-constructed-context-values":"off",
-        "import/order":"off",
+        'import/order': "off",
         "no-plusplus":"off",
+        "no-empty-pattern":"off",
+        "react/sort-comp":"off",
+        "import/extensions":"off",
     }
 }

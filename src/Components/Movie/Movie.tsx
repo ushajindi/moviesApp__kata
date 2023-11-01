@@ -1,7 +1,7 @@
 import { Image, Rate, Typography } from "antd";
-import { MovieType } from "../../App";
 import MovieContext from "../Context/MovieContext";
 import { formatDate, formatRatingCirle, ShortingOverview } from "./helpers";
+import { MovieType } from "../App";
 import "./Movie.css";
 import noImg from "../../Public/img/no_image.jpg";
 
@@ -25,7 +25,7 @@ function Movie({
     <div className="movie">
       <div className="movie__card">
         <MovieContext.Consumer>
-          {({ genre, setRating }) => {
+          {({ genre, setRating, page }) => {
             if (genre != null && genre.length !== 0) {
               return (
                 <>
@@ -89,7 +89,9 @@ function Movie({
                         }}
                         count={10}
                         allowHalf
-                        defaultValue={Number(voteAverage.toFixed(2))}
+                        defaultValue={
+                          page === "Rated" ? Number(voteAverage.toFixed(2)) : 0
+                        }
                       />
                     </div>
                   </div>
