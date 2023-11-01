@@ -3,8 +3,7 @@
 # Проект "kata__MovieApp"
 
 Это проект для создания приложения To-Do List с использованием React, Vite и TypeScript.
-#Ссылка на приложения [http://movieapp.rshakh.ru/](http://movieapp.rshakh.ru/)
-#Ссылка на приложения Vercel [https://movies-app-kata-pied.vercel.app/](https://movies-app-kata-pied.vercel.app/)]
+#Ссылка на приложения Vercel [https://movies-app-kata-eta.vercel.app/](https://movies-app-kata-eta.vercel.app/)
 ## Установка зависимостей
 
 Перед запуском проекта убедитесь, что у вас установлен Node.js и npm. Затем выполните следующие команды в корневой директории проекта:
